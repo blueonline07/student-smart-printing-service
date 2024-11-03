@@ -1,15 +1,12 @@
 
-# Project Name
-HCMUT Smart Printing Service Contribution Rules
+# Project workflow
+HCMUT Smart Printing Service using GitFlow workflow
 
 **Branchs Structure**:
 
 - **`main`**: production branch
-- **`develop`**: Main development branch.
-  - **`frontend`**: Parent branch for frontend development.
-    - **`frontend/web`**: Development branch for web-specific frontend features.
-    - **`frontend/mobile`**: Development branch for mobile-specific frontend features.
-  - **`backend`**: Development branch for backend-specific features.
+- **`dev`**: Main development branch.
+- **`feat`** : develop your features here
 
 ---
 
@@ -20,18 +17,20 @@ This repository follows a structured branching strategy to organize development 
 ## Branching Workflow
 
 1. **Creating New Feature Branches**: 
-   - Always branch off from the relevant feature branch. For example:
-     - For a web frontend feature, branch from `frontend/web`.
-     - For a backend feature, branch from `backend`.
-
-   ```bash
-   git checkout frontend/web  # Switch to the appropriate branch
-   git checkout -b feature/feature-name  # Create a new feature branch
-   ```
+   - Always branch off from the development branch. For example, if you are developing the authentication page for the web:
+      - `git checkout develop`
+      - `git checkout -b feat/fe/web/auth`
+      - Then start coding from that branch. When done, push your changes to your new branch : `git push -u origin feat/fe/web/auth` (dont push your code directly to other branches pls T.T)
+      - Go to github and create a pull request to `dev` branch
 
 2. **Pull Requests**:
-   - Open pull requests from feature branches (e.g., `feature/feature-name`) to the respective parent branch (e.g., `frontend/web`).
-   - Once the `frontend/web` or `backend` branches are stable, changes are merged into `develop`.
+   - Open pull requests from feature branches (e.g., `feat/fe/web/auth`) to the respective parent branch (e.g., `dev`).
+   - Wait ulti your PR is merged.
+   - After your PR is merged, your branch on Github will be deleted, so next time remember using `git push -u origin your-branch-name`
+
+## Merging responsibility
+   - Team leader will be responsible for merging PR to `main` branch
+   - On `dev` branch, the person who tasked the feat will be responsible for mergin that feat to `dev` branch. (i.e. Frontend leader asks the person 1 to do the authentication page, then he will merge person 1 PR, too)
 
 ## Commit Message Guidelines
 
@@ -54,26 +53,21 @@ To maintain consistency and clarity in commit messages, follow this format:
 ### Scopes
 
 Use these scopes to specify the part of the application affected:
-- **frontend**: General frontend code.
-- **frontend/web**: Web-specific frontend code.
-- **frontend/mobile**: Mobile-specific frontend code.
-- **backend**: Backend-specific code.
+- **fe/web/feat-name**: Web-specific frontend code.
+- **fe/moblie/feat-name**: Mobile-specific frontend code.
+- **be/feat-name**: Backend-specific code.
+All those start with `feat` prefix.
 
 ### Examples
 
 1. **Feature Addition**:
    ```
-   feat(frontend/web): add responsive navbar
+   feat(fe/web): add responsive navbar
    ```
 
 2. **Bug Fix**:
    ```
-   fix(backend): resolve API authentication issue
-   ```
-
-3. **Documentation**:
-   ```
-   docs(frontend): update README for frontend setup
+   fix(be): resolve API authentication issue
    ```
 
 ## Setting Up and Getting Started
@@ -86,7 +80,7 @@ Use these scopes to specify the part of the application affected:
 
 2. **Switch to Development Branch**:
    ```bash
-   git checkout develop
+   git checkout dev
    ```
 
 3. **Install Dependencies**:
@@ -94,6 +88,6 @@ Use these scopes to specify the part of the application affected:
 
 ## Contributing
 
-Please ensure all feature branches are merged to the appropriate branch and adhere to the commit message guidelines. Open pull requests for code review before merging to the main `develop` branch.
+Please ensure all feature branches are merged to the appropriate branch and adhere to the commit message guidelines. Open pull requests for code review before merging to the main `dev` branch.
 
 ---
