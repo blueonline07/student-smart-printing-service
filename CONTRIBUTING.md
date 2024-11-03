@@ -53,20 +53,20 @@ To maintain consistency and clarity in commit messages, follow this format:
 ### Scopes
 
 Use these scopes to specify the part of the application affected:
-- **fe/web**: Web-specific frontend code.
-- **fe/moblie**: Mobile-specific frontend code.
-- **be**: Backend-specific code.
+- **frontend/web**: Web-specific frontend code.
+- **frontend/moblie**: Mobile-specific frontend code.
+- **backend**: Backend-specific code.
 
 ### Examples
 
 1. **Feature Addition**:
    ```
-   feat(fe/web): add responsive navbar
+   feat(frontend/web): add responsive navbar
    ```
 
 2. **Bug Fix**:
    ```
-   fix(be): resolve API authentication issue
+   fix(backend): resolve API authentication issue
    ```
 
 ## Setting Up and Getting Started
