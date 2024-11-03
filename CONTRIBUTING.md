@@ -56,7 +56,6 @@ Use these scopes to specify the part of the application affected:
 - **fe/web/feat-name**: Web-specific frontend code.
 - **fe/moblie/feat-name**: Mobile-specific frontend code.
 - **be/feat-name**: Backend-specific code.
-All those start with `feat` prefix.
 
 ### Examples
 
