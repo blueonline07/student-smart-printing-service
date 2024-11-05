@@ -18,7 +18,7 @@ This repository follows a structured branching strategy to organize development 
 
 1. **Creating New Feature Branches**: 
    - Always branch off from the development branch. For example, if you are developing the authentication page for the web:
-      - `git checkout dev`
+      - `git checkout -b dev origin/dev`
       - `git checkout -b feat/fe/web/auth`
       - Then start coding from that branch. When done, push your changes to your new branch : `git push origin feat/fe/web/auth` (dont push your code directly to other branches pls T.T)
       - Go to github and create a pull request to `dev` branch
@@ -72,7 +72,7 @@ To maintain consistency and clarity in commit messages, follow this format:
 
 2. **Switch to Development Branch**:
    ```bash
-   git checkout dev
+   git checkout -b dev origin/main
    ```
 
 3. **Install Dependencies**:
