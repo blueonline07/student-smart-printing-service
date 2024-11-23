@@ -57,8 +57,8 @@ const HomeBeforeLogin = ({navigation}) => {
             <Text style={styles.footerAddress}>Vui lòng liên hệ văn phòng SPSO, phòng 109A5 để được hỗ trợ.</Text>
           </View>
         </View>
-        <Image source={require('./assets/SPSS_logo.png')} style={styles.footerLogo} />
-        <Image source={require('./assets/01_logobachkhoatoi.png')} style={styles.footerLogo} />
+        <Image source={require('./assets/SPSS_logo.png')} style={styles.footerSPSSLogo} />
+        <Image source={require('./assets/01_logobachkhoatoi.png')} style={styles.footerBKLogo} />
       </View>
     </View>
   );
@@ -223,12 +223,20 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
 
-  footerLogo: {
+  footerSPSSLogo: {
     position: 'absolute',
-    width: 124.83,
+    width: 40.83,
+    height: 54.23,
+    top: 15,
+    left: 330,
+  },
+
+  footerBKLogo: {
+    position: 'absolute',
+    width: 100,
     height: 56.91,
-    left: 266,
-    top: 841,
+    left: 230,
+    top: 15,
   },
 });
 
