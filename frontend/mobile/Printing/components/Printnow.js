@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity ,Dimensions } from 'react-native';
+import {ScrollView, View, Text, Image, TouchableOpacity ,Dimensions } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import styles from '../styles/Printerstyle';
+import UpLoadScreen from '../screens/upLoad';
 const PrintNowScreen = ({  navigation }) => {
     const [selectedBranch, setSelectedBranch] = useState("1");
     const [selectedBuilding, setSelectedBuilding] = useState("H6");
@@ -12,21 +13,17 @@ const PrintNowScreen = ({  navigation }) => {
         windowWidth = windowHeight}
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
         {/* Content */}
             <View style={styles.bounding}>
-
                 <Text style={{ color: "white", fontSize: 22, fontWeight: "bold", textAlign: "center" }}>
                     IN TỰ ĐỘNG LẤY LIỀN
                 </Text>
-
-
                 <View style={styles.conttent_print}>
                     <Text style={{color: "#075385", fontSize: 22 ,fontWeight: "bold"}}>CHỌN MÁY IN</Text>
                     <Image source={require('../../assets/images/printer.png')} 
-                    style={{width: windowWidth * 0.75, 
-                        height: (windowWidth * 0.75) }} />
-
+                    style={{width: windowWidth * 0.7, 
+                        height: (windowWidth * 0.7) }} />
                     {/* Dropdowns */}
                     <View style={styles.dropdownContainer}>
                         <View style={styles.dropdown}>
@@ -76,13 +73,13 @@ const PrintNowScreen = ({  navigation }) => {
                         <TouchableOpacity style={styles.buttonPrinter} onPress={() => navigation.replace('Printing')}>
                         <Text style={styles.buttonText} >Quay lại</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonPrinter} >
+                        <TouchableOpacity style={styles.buttonPrinter} onPress={() => navigation.navigate('UpLoadDoc')}>
                         <Text style={styles.buttonText} >Tiếp tục</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
