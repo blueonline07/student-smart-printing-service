@@ -1,20 +1,42 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Print_screen from './Printing/Print_screen';
-import PrinterSelectionScreen from './Printing/screens/selectPrint';
+
+// Import your screens
+import HomeBeforeLogin from './Login/HomeBeforeLogin';
+import HomeLogin from './Login/HomeLogin';
+import HomeAfterLogin from './Login/HomeAfterLogin';
+
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Printing"
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="Printing" component={Print_screen} />
-        <Stack.Screen name="PrinterSelection" component={PrinterSelectionScreen} />
+      <Stack.Navigator initialRouteName="HomeBeforeLogin">
+        
+        {/* HomeBeforeLogin Screen */}
+        <Stack.Screen
+          name="HomeBeforeLogin"
+          component={HomeBeforeLogin}
+          options={{ headerShown: false }}
+        />
+
+        {/* HomeLogin Screen */}
+        <Stack.Screen
+          name="HomeLogin"
+          component={HomeLogin}
+          options={{ headerShown: false }}
+        />
+
+        {/* HomeAfterLogin Screen */}
+        <Stack.Screen
+          name="HomeAfterLogin"
+          component={HomeAfterLogin}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
+      <StatusBar style="auto" />
     </NavigationContainer>
   );
 }
