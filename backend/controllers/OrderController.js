@@ -12,8 +12,8 @@ export default class OrderController {
 
   static async createOrder(req, res) {
     try {
-      await OrderDAO.create(req.body);
-      res.status(201).end();
+      const ord_id = await OrderDAO.create(req.body);
+      res.status(201).json({ id: ord_id });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
@@ -22,6 +22,15 @@ export default class OrderController {
   static async updateOrder(req, res) {
     try {
       await OrderDAO.update(req.body, req.params.id);
+      res.status(200).end();
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
+  static async deleteOrder(req, res) {
+    try {
+      await OrderDAO.delete(req.params.id);
       res.status(200).end();
     } catch (error) {
       res.status(500).json({ error: error.message });

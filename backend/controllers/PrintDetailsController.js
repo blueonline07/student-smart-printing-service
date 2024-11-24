@@ -20,4 +20,25 @@ export default class PrintDetailsController {
       return res.status(400).send(err);
     }
   }
+
+  static async update(req, res){
+    const printDetail = req.body;
+    const order_id = req.params.order_id;
+    try {
+      await PrintDetailsDAO.update(printDetail, order_id);
+      return res.status(200).send('Print detail updated');
+    } catch (err) {
+      return res.status(400).send(err);
+    }
+  }
+
+  static async delete(req, res){
+    const order_id = req.params.order_id;
+    try {
+      await PrintDetailsDAO.delete(order_id);
+      return res.status(200).send('Print detail deleted');
+    } catch (err) {
+      return res.status(400).send(err);
+    }
+  }
 }
