@@ -1,40 +1,45 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import HeaderBeforeLogin from '../components/HeaderBeforeLogin';
+import Title from '../components/Title';
 
-const HomeLogin = ({navigation}) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+// import LinearGradient from 'react-native-linear-gradient';
 
-    const [isVariant1, setIsVariant1] = useState(false);
-    const toggleVariant1 = () => {
-      setIsVariant1(!isVariant1);
-    };
+const HomeLogin = ({ navigation }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-    const [isVariant2, setIsVariant2] = useState(false);
-    const toggleVariant2 = () => {
-      setIsVariant2(!isVariant2);
-    };
+  // const [isVariant1, setIsVariant1] = useState(false);
+  // const toggleVariant1 = () => {
+  //   setIsVariant1(!isVariant1);
+  // };
+
+  // const [isVariant2, setIsVariant2] = useState(false);
+  // const toggleVariant2 = () => {
+  //   setIsVariant2(!isVariant2);
+  // };
     
-    return (
-        <View style={styles.container}>
-
+  return (
+    <View style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
-        {/* Home Button */}
-        <TouchableOpacity style={styles.spssLogo} onPress={() => navigation.navigate('HomeBeforeLogin')}>
-          <Image source={require('../assets/SPSS_logo.png')} style={styles.spssLogo}/>
-        </TouchableOpacity>
-      </View>
+      <HeaderBeforeLogin navigation={navigation}/>
       
       {/* Title Section */}
-      <Text style={styles.systemTitle}>HỆ THỐNG IN ẤN THÔNG MINH</Text>
-      <Text style={styles.subTitle}>HCMUT_SSPS</Text>
-      <Image source={require('../assets/avatar-1.png')} style={styles.avatar} />
-      <Text style={styles.featTitle}>ĐĂNG NHẬP TÀI KHOẢN</Text>
+      <Title/>
+      <Image 
+        source={require('../../assets/images/avatar-2.png')} 
+        style={styles.avatar}
+      />
+
+      <Text style={styles.featTitle}>
+        ĐĂNG NHẬP TÀI KHOẢN
+      </Text>
 
       {/* Username Input */}
       <View style={styles.inputContainer}>
-        <Text style={styles.inputLabel}>Tên đăng nhập:</Text>
+        <Text style={styles.inputLabel}>
+          Tên đăng nhập:
+        </Text>
         <TextInput
           style={styles.inputField}
           placeholder="Nhập tên đăng nhập"
@@ -42,9 +47,11 @@ const HomeLogin = ({navigation}) => {
           value={username}
           onChangeText={setUsername}
         />
-
-      {/* Password Input */}
-        <Text style={styles.inputLabel}>Mật khẩu:</Text>
+      
+        {/* Password Input */}
+        <Text style={styles.inputLabel}>
+          Mật khẩu:
+        </Text>
         <TextInput
           style={styles.inputField}
           placeholder="Nhập mật khẩu"
@@ -74,63 +81,34 @@ const HomeLogin = ({navigation}) => {
       </View> */}
       
       {/* Login Button */}
-      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('HomeAfterLogin')}>
-        <Text style={styles.loginText}>Đăng nhập</Text>
+      <TouchableOpacity 
+        style={styles.loginButton} 
+        onPress={() => navigation.navigate('HomeAfterLogin')}
+      >
+        {/* <LinearGradient
+          colors={['rgba(32, 201, 151, 0.4)', 'rgba(0, 192, 239, 0.4)']}
+          style={styles.gradientButton}> */}
+          <Text style={styles.loginText}>
+            Đăng nhập
+          </Text>
+        {/* </LinearGradient> */}
       </TouchableOpacity>
 
       {/* Footer Information */}
-      <Text style={styles.footerText}>Your account is authenticated by HCMUT_SSO.</Text>
+      <Text style={styles.footerText}>
+        Your account is authenticated by HCMUT_SSO.
+      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  
   container: {
     flex: 1,
     backgroundColor: '#0388B4',
     position: 'relative',
-    width: 412,
-    height: 917,
-  },
-
-  header: {
-    backgroundColor: '#00C0EF',
-    height: 80,
     width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-    fontSize: 20,
-  },
-
-  spssLogo: {
-    position: 'absolute',
-    width: 40.83,
-    height: 54.23,
-    top: 6,
-  },
-
-  systemTitle: {
-    fontFamily: 'Chakra Petch',
-    fontSize: 25,
-    fontWeight: '700',
-    color: '#D9D9D9',
-    textAlign: 'center',
-    marginTop: 45,
-    marginHorizontal: 20,
-  },
-
-  subTitle: {
-    fontFamily: 'Chakra Petch',
-    fontSize: 40,
-    fontWeight: '700',
-    color: '#D9D9D9',
-    textAlign: 'center',
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: { width: 0, height: 4 },
-    textShadowRadius: 4,
-    marginTop: 15,
+    height: '100%',
   },
 
   avatar: {
@@ -138,7 +116,7 @@ const styles = StyleSheet.create({
     width: 206,
     height: 198,
     marginLeft: 100,
-    marginTop: 215,
+    marginTop: 185,
   },
 
   featTitle: {
@@ -162,15 +140,9 @@ const styles = StyleSheet.create({
     backgroundColor:'#6A737B',
     borderRadius: 30,
     height: 330,
-    weight: 350,
   },
 
   inputLabel: {
-    //position: 'absolute',
-    //width: 146,
-    //height: 33,
-    //left: 72,
-    //top: 500,
     marginBottom: 20,
     fontFamily: 'Chakra Petch',
     fontSize: 20,
@@ -181,12 +153,9 @@ const styles = StyleSheet.create({
   },
 
   inputField: {
-    //position: 'absolute',
     width: '90%',
     height: 40,
     marginLeft: 18,
-    //left: 51,
-    //top: 650,
     backgroundColor: 'rgba(0, 192, 239, 0.5)',
     borderRadius: 100,
     color: '#FFFFFF',
@@ -283,16 +252,24 @@ const styles = StyleSheet.create({
   */
 
   loginButton: {
+    backgroundColor: 'rgba(32, 201, 151, 0.4)',
+    borderRadius: 100,
     position: 'absolute',
     width: 265,
     height: 40,
-    left: 75,
-    top: 700,
-    backgroundColor: 'linear-gradient(180deg, rgba(32, 201, 151, 0.4) 0%, rgba(0, 192, 239, 0.4) 100%)',
-    borderRadius: 100,
+    left: 65,
+    top: 670,
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  // gradientButton: {
+  //   width: '100%',
+  //   height: '100%',
+  //   borderRadius: 100,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
 
   loginText: {
     fontFamily: 'Chakra Petch',
@@ -305,24 +282,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 212,
     left: '25%',
-    top: 760,
+    top: 725,
     fontFamily: 'Chakra Petch',
     fontSize: 10,
     fontWeight: '400',
     color: '#FCFBFF',
     textAlign: 'center',
-  },
-
-  homeButton: {
-    position: 'absolute',
-    width: 48,
-    height: 48,
-    left: 28,
-    top: 15,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 

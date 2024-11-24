@@ -4,9 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Import your screens
-import HomeBeforeLogin from './Login/HomeBeforeLogin';
-import HomeLogin from './Login/HomeLogin';
-import HomeAfterLogin from './Login/HomeAfterLogin';
+import HomeBeforeLogin from './Login/screens/HomeBeforeLogin';
+import HomeLogin from './Login/screens/HomeLogin';
+import HomeAfterLogin from './Login/screens/HomeAfterLogin';
+import PrinterSelectionScreen from './Printing/screens/selectPrint';
+import Information from './Login/screens/Information';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +35,20 @@ export default function App() {
         <Stack.Screen
           name="HomeAfterLogin"
           component={HomeAfterLogin}
+          options={{ headerShown: false }}
+        />
+
+        {/* Information Screen */}
+        <Stack.Screen
+          name="Information"
+          component={Information}
+          options={{ headerShown: false }}
+        />
+
+        {/* Printer Selection Screen */}
+        <Stack.Screen
+          name="PrinterSelectionScreen"
+          component={PrinterSelectionScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
