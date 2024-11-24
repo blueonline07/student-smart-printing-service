@@ -1,19 +1,31 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './Login/Home';
-import LoginChoice from './component/LoginChoice';
-import LoginForm from './component/LoginForm';
+import routes from './routes';
+import { BrowserRouter , Routes, Route } from 'react-router-dom';
+import { Fragment } from 'react';
+import LandingPage from './pages/LandingPage/LandingPage';
+import DefaultLayout from './Layout/Layout';
 
-const App = () => {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login-choice" element={<LoginChoice />} />
-                <Route path="/login-form" element={<LoginForm />} />
-            </Routes>
-        </Router>
-    );
-};
+function App() {
+  return (
+      <BrowserRouter>
+          <Routes>
+              {routes.map((route, index) => {
+                  const Page = route.component;
+                  const Layout = route.layout ? DefaultLayout : Fragment;
+                  return (
+                      <Route
+                          key={index}
+                          path={route.path}
+                          element={
+                              <Layout>
+                                  <Page />
+                              </Layout>
+                          }
+                      />
+                  );
+              })}
+          </Routes>
+      </BrowserRouter>
+  );
+}
 
 export default App;
