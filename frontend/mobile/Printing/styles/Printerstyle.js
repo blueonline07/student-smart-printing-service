@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#6A737BCC',
         borderRadius: 30,
         marginTop: 20,
-        padding: 20,
+        padding: 10,
         paddingTop: 10,
         width: '92%',
         flexDirection: 'column',
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginRight: 10,
-        width: '50%',
+        width: '45%',
     },
     pickercontainer: {
         width: '47%', 

@@ -3,6 +3,7 @@ import { ScrollView, View, Text, Image, TouchableOpacity, Dimensions } from 'rea
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from '../styles/Printerstyle';
+import { addScreenData , getScreenData} from '../api/configprinter';
 
 const PrintLateScreen = ({ navigation }) => {
     const [selectedBranch, setSelectedBranch] = useState("1");
@@ -41,9 +42,16 @@ const PrintLateScreen = ({ navigation }) => {
         setShowTimePicker((prev) => ({ ...prev, [type]: false }));
     };
 
-    const formatDateTime = (date) => {
-        return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-    };
+    const savePrintLater = () => {
+        const data = { 
+            "type": "counter",
+            "student": "khang.lykan31@hcmut.edu.vn",
+            "printer": selectedBranch,
+            "required": time.startDate,
+        };
+        console.log(data);
+        addScreenData("com1",data);
+    }
 
     return (
         <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -76,13 +84,14 @@ const PrintLateScreen = ({ navigation }) => {
                         </View>
 
                         <Text style={[styles.label_printing, { width: 'auto', marginLeft: 5 }]}>Thời gian nhận tài liệu:</Text>
-                        <View style={[styles.dropdown,{justifyContent:"space-evenly", flexDirection:"row"}]}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Sau:</Text>
+                        <View style={[styles.dropdown,{justifyContent:"flex-start", flexDirection:"row"}]}>
+                            <Text style={{ fontSize: 18, fontWeight: 'bold',width:"35%" ,marginLeft:"10%"}}>Ngày:</Text>
                             <TouchableOpacity onPress={() => setShowDatePicker({ ...showDatePicker, start: true })} style={[styles.pickerdatetime, { marginLeft: 5 }]}>
                                 <Text style={{padding:10, fontSize:12, fontWeight: 'bold'}}>{dates.startDate.toLocaleDateString("en-GB")}</Text>
                             </TouchableOpacity>
                         </View>
-                        <View style={[styles.dropdown,{justifyContent:"space-evenly", flexDirection:"row"}]}>
+                        <View style={[styles.dropdown,{justifyContent:"flex-start", flexDirection:"row"}]}>
+                            <Text style={{ fontSize: 18, fontWeight: 'bold' ,marginLeft:"10%", width:"35%" }}>Thời gian:</Text>
                             <TouchableOpacity onPress={() => setShowTimePicker({ ...showTimePicker, start: true })} style={[styles.pickerdatetime, { marginLeft: 5 }]}>
                                 <Text style={{padding:10, fontSize: 12, fontWeight: 'bold'}}>{time.startDate.toLocaleTimeString()}</Text>
                             </TouchableOpacity>
@@ -107,10 +116,12 @@ const PrintLateScreen = ({ navigation }) => {
                     </View>
 
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.buttonPrinter} onPress={() => navigation.replace('Printing')}>
+                        <TouchableOpacity style={styles.buttonPrinter} onPress={() => navigation.goBack()}>
                             <Text style={styles.buttonText}>Quay lại</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonPrinter}>
+                        <TouchableOpacity style={styles.buttonPrinter} onPress={() =>{
+                            savePrintLater();
+                            navigation.navigate('UpLoadDoc')}}>
                             <Text style={styles.buttonText}>Tiếp tục</Text>
                         </TouchableOpacity>
                     </View>

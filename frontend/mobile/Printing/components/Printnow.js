@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {ScrollView, View, Text, Image, TouchableOpacity ,Dimensions } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { addScreenData , getScreenData} from '../api/configprinter';
 import styles from '../styles/Printerstyle';
-import UpLoadScreen from '../screens/upLoad';
 const PrintNowScreen = ({  navigation }) => {
     const [selectedBranch, setSelectedBranch] = useState("1");
     const [selectedBuilding, setSelectedBuilding] = useState("H6");
@@ -11,7 +11,18 @@ const PrintNowScreen = ({  navigation }) => {
     const windowHeight = Dimensions.get('window').height;
     if (windowWidth > windowHeight) {
         windowWidth = windowHeight}
-
+    
+    const savePrintNow = () => {
+        const data = { 
+            "type": "instant",
+            "student": "khang.lykan31@hcmut.edu.vn",
+            "printer": selectedPrinter,
+            "required": null,
+        };
+            console.log(data);
+            addScreenData("com1",data);
+            // console.log(getScreenData());
+        }
     return (
         <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
         {/* Content */}
@@ -63,17 +74,17 @@ const PrintNowScreen = ({  navigation }) => {
                                     onValueChange={(itemValue, itemIndex) => setSelectedPrinter(itemValue)}
                                     style={styles.picker}
                                 >
-                                    <Picker.Item label="1" value="1" />
+                                    <Picker.Item label="106A4P1" value="106A4P1" />
                                     <Picker.Item label="2" value="2" />
                                 </Picker>
                             </View>
                         </View>
                     </View>
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.buttonPrinter} onPress={() => navigation.replace('Printing')}>
+                        <TouchableOpacity style={styles.buttonPrinter} onPress={() => navigation.goBack()}>
                         <Text style={styles.buttonText} >Quay lại</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonPrinter} onPress={() => navigation.navigate('UpLoadDoc')}>
+                        <TouchableOpacity style={styles.buttonPrinter} onPress={() => {savePrintNow();navigation.navigate('UpLoadDoc')}}>
                         <Text style={styles.buttonText} >Tiếp tục</Text>
                         </TouchableOpacity>
                     </View>
