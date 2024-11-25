@@ -9,7 +9,7 @@ export default class PrintDetailsDAO {
     "to_page": "10",
     "two_sided": "true",
     "colored": "true",
-    "paper_size": "A4",
+    "page_size": "A4",
     "quantity": "1",
     "file_name": "file.pdf",
     "file_path": "path/to/file.pdf"
@@ -17,7 +17,6 @@ export default class PrintDetailsDAO {
   */
 
   static async create(printDetail){
-    console.log(printDetail);
     const query = 'INSERT INTO print_details (order_id, from_page, to_page, two_sided, colored, page_size, quantity, file_name, file_path) \
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
     const values = [printDetail.order_id,  printDetail.from_page, printDetail.to_page, printDetail.two_sided,
@@ -40,7 +39,7 @@ export default class PrintDetailsDAO {
     }
   }
 
-  static async update(printDetail, order_id){
+  static async update(printDetail, order_id, id){
     const fields = [];
     const values = [];
     let index = 1;
@@ -82,8 +81,9 @@ export default class PrintDetailsDAO {
       return Promise.resolve(); // Nothing to update
     }
 
-    const query = `UPDATE print_details SET ${fields.join(', ')} WHERE order_id = $${index}`;
+    const query = `UPDATE print_details SET ${fields.join(', ')} WHERE order_id = $${index} AND id = $${index + 1}`;
     values.push(order_id);
+    values.push(id);
 
     try {
       await client.query(query, values);
@@ -92,9 +92,9 @@ export default class PrintDetailsDAO {
     }
   }
 
-  static async delete(order_id){
-    const query = 'DELETE FROM print_details WHERE order_id = $1';
-    const values = [order_id];
+  static async delete(order_id, id){
+    const query = 'DELETE FROM print_details WHERE order_id = $1 AND id = $2';
+    const values = [order_id, id];
     try {
       await client.query(query, values);
     } catch (err) {
