@@ -45,7 +45,7 @@ function LandingPage() {
             <Header />
             <main className="flex flex-grow bg-cyan-600 bg-opacity-95 px-6 py-6">
                 <div className="flex flex-col">
-                    <h2 className="pt-2 text-5xl font-semibold text-[#ffffff]">
+                    <h2 className="pt-2 text-5xl font-semibold text-[#D9D9D9]">
                         HỆ THỐNG IN ẤN THÔNG MINH
                     </h2>
                     <img src={hcmut} alt="HCMUT" className="mt-8 h-auto w-3/6" />
