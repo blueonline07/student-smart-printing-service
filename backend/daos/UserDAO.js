@@ -19,31 +19,27 @@ import { client } from "../config/db.js";
 
 export default class UserDAO {
   static async create(user) {
+    try {
+      const query = "INSERT INTO users (email, name) VALUES ($1, $2)";
+      const values = [user.email, user.name];
+      await client.query(query, values);
+    }
+    catch (err) {
+      return Promise.reject(err);
+    }
     const role = user.role;
-    const email = await client.query("SELECT email FROM users WHERE email = $1", [user.email]);
-    if (email.rows.length == 0) {
-      await client.query("INSERT INTO users (email, name) VALUES ($1, $2)", [
-        user.email,
-        user.name,
-      ]);
-    }
-    else {
-      user.email = email.rows[0].email;
-    }
-    let query;
-    let values;
     try {
       if (role === "student") {
-        query = "INSERT INTO students (email, balance) VALUES ($1, $2)";
-        values = [user.email, 0];
+        const query = "INSERT INTO students (email, balance) VALUES ($1, $2)";
+        const values = [user.email, 0];
+        await client.query(query, values);
       } else if (role === "staff") {
-        query = "INSERT INTO staffs (email, workplace) VALUES ($1, $2)";
-        values = [user.email, user.workplace];
-      } else {
+        const query = "INSERT INTO staffs (email, workplace) VALUES ($1, $2)";
+        const values = [user.email, user.workplace];
+        await client.query(query, values);
+      } else if (role !== undefined) {
         return Promise.reject(new Error("Invalid role"));
       }
-      await client.query(query, values);
-
     } catch (err) {
       return Promise.reject(err);
     }
