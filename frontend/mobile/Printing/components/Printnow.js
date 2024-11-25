@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity ,Dimensions } from 'react-native';
+import {ScrollView, View, Text, Image, TouchableOpacity ,Dimensions } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { addScreenData , getScreenData} from '../api/configprinter';
 import styles from '../styles/Printerstyle';
 const PrintNowScreen = ({  navigation }) => {
     const [selectedBranch, setSelectedBranch] = useState("1");
@@ -10,23 +11,30 @@ const PrintNowScreen = ({  navigation }) => {
     const windowHeight = Dimensions.get('window').height;
     if (windowWidth > windowHeight) {
         windowWidth = windowHeight}
-
+    
+    const savePrintNow = () => {
+        const data = { 
+            "type": "instant",
+            "student": "khang.lykan31@hcmut.edu.vn",
+            "printer": selectedPrinter,
+            "required": null,
+        };
+            console.log(data);
+            addScreenData("com1",data);
+            // console.log(getScreenData());
+        }
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
         {/* Content */}
             <View style={styles.bounding}>
-
                 <Text style={{ color: "white", fontSize: 22, fontWeight: "bold", textAlign: "center" }}>
                     IN TỰ ĐỘNG LẤY LIỀN
                 </Text>
-
-
                 <View style={styles.conttent_print}>
                     <Text style={{color: "#075385", fontSize: 22 ,fontWeight: "bold"}}>CHỌN MÁY IN</Text>
                     <Image source={require('../../assets/images/printer.png')} 
-                    style={{width: windowWidth * 0.75, 
-                        height: (windowWidth * 0.75) }} />
-
+                    style={{width: windowWidth * 0.7, 
+                        height: (windowWidth * 0.7) }} />
                     {/* Dropdowns */}
                     <View style={styles.dropdownContainer}>
                         <View style={styles.dropdown}>
@@ -66,23 +74,23 @@ const PrintNowScreen = ({  navigation }) => {
                                     onValueChange={(itemValue, itemIndex) => setSelectedPrinter(itemValue)}
                                     style={styles.picker}
                                 >
-                                    <Picker.Item label="1" value="1" />
+                                    <Picker.Item label="106A4P1" value="106A4P1" />
                                     <Picker.Item label="2" value="2" />
                                 </Picker>
                             </View>
                         </View>
                     </View>
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.buttonPrinter} onPress={() => navigation.replace('Printing')}>
+                        <TouchableOpacity style={styles.buttonPrinter} onPress={() => navigation.goBack()}>
                         <Text style={styles.buttonText} >Quay lại</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonPrinter} >
+                        <TouchableOpacity style={styles.buttonPrinter} onPress={() => {savePrintNow();navigation.navigate('UpLoadDoc')}}>
                         <Text style={styles.buttonText} >Tiếp tục</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
