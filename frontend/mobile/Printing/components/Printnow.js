@@ -3,6 +3,7 @@ import {ScrollView, View, Text, Image, TouchableOpacity ,Dimensions } from 'reac
 import { Picker } from '@react-native-picker/picker';
 import { addScreenData , getScreenData} from '../api/configprinter';
 import styles from '../styles/Printerstyle';
+import Header from '../../component/header';
 const PrintNowScreen = ({  navigation }) => {
     const [selectedBranch, setSelectedBranch] = useState("1");
     const [selectedBuilding, setSelectedBuilding] = useState("H6");
@@ -24,9 +25,10 @@ const PrintNowScreen = ({  navigation }) => {
             // console.log(getScreenData());
         }
     return (
-        <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1,  alignItems: 'center' }}>
         {/* Content */}
-            <View style={styles.bounding}>
+            <Header navigation={navigation}/>
+            <View style={[styles.bounding,{marginTop:40,marginBottom:30}]}>
                 <Text style={{ color: "white", fontSize: 22, fontWeight: "bold", textAlign: "center" }}>
                     IN TỰ ĐỘNG LẤY LIỀN
                 </Text>

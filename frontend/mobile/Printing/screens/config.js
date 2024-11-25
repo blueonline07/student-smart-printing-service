@@ -4,7 +4,8 @@ import styles from '../styles/Printerstyle';
 import PDfExample from '../components/pdf';
 import { Picker } from '@react-native-picker/picker';
 import { addFileData ,getFileData, clearfile } from '../api/configfile';
-
+import Header from '../../component/header';
+import Footer from '../../component/Footer';
 
 const ConfigfileScreen = ({ route, navigation }) => {
     const [files, setFiles] = useState(route.params.file || []);
@@ -58,9 +59,9 @@ const ConfigfileScreen = ({ route, navigation }) => {
         navigation.goBack();
     }
     return (
-        <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
-            
-            <View style={[styles.bounding,{height:"auto"}]}>
+        <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }}>
+            <Header navigation={navigation}/>
+            <View style={[styles.bounding,{height:"auto", marginTop:40,marginBottom:30}]}>
                 <Text style={{ color: "white", fontSize: 22, fontWeight: "bold", textAlign: "center" }}>
                     TÙY CHỈNH THÔNG SỐ
                 </Text>
@@ -134,6 +135,7 @@ const ConfigfileScreen = ({ route, navigation }) => {
                     </View>
                 </View>
             </View>
+            <Footer/>
         </ScrollView>
     );
 };

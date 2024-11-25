@@ -4,7 +4,8 @@ import styles from '../styles/Printerstyle';
 import { getFileData, clearfile } from '../api/configfile';
 import { sendreq } from '../api/sendrequest';
 import { getScreenData } from '../api/configprinter';
-
+import Header from '../../component/header';
+import Footer from '../../component/Footer';
 
 const ConfirmScreen = ({ navigation }) => {
     const [fileData, setFileData] = useState(getFileData());
@@ -24,8 +25,9 @@ const ConfirmScreen = ({ navigation }) => {
         await sendreq(data);
     }
     return(
-        <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <View style={[styles.bounding,{height:"auto",width:"95%"}]}>
+        <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }}>
+            <Header navigation={navigation}/>
+            <View style={[styles.bounding,{height:"auto",width:"95%",marginTop:40,marginBottom:30}]}>
                 <Text style={{ color: "white", fontSize: 22, fontWeight: "bold", textAlign: "center" }}>
                     XÁC NHẬN GIAO DỊCH IN
                 </Text>
@@ -70,6 +72,7 @@ const ConfirmScreen = ({ navigation }) => {
                     </View>
                 </View>
             </View>
+            <Footer/>
         </ScrollView>
     )
 }

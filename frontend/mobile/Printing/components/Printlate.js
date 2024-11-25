@@ -4,6 +4,8 @@ import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from '../styles/Printerstyle';
 import { addScreenData , getScreenData} from '../api/configprinter';
+import Header from '../../component/header';
+import Footer from '../../component/Footer';
 
 const PrintLateScreen = ({ navigation }) => {
     const [selectedBranch, setSelectedBranch] = useState("1");
@@ -54,8 +56,9 @@ const PrintLateScreen = ({ navigation }) => {
     }
 
     return (
-        <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <View style={styles.bounding}>
+        <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }}>
+            <Header navigation={navigation}/>
+            <View style={[styles.bounding,{marginTop:40,marginBottom:30}]}>
                 <Text style={{ color: "white", fontSize: 22, fontWeight: "bold", textAlign: "center" }}>
                     IN LẤY SAU TẠI QUẦY
                 </Text>
@@ -127,6 +130,7 @@ const PrintLateScreen = ({ navigation }) => {
                     </View>
                 </View>
             </View>
+            <Footer/>
         </ScrollView>
     );
 };

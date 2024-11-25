@@ -26,7 +26,7 @@ const Header = ({ navigation }) => {
   };
 
   return (
-    <View onPress={closeMenus} style={{flexDirection:"row"}}>
+    <TouchableWithoutFeedback onPress={closeMenus}>
       <View style={styles.header}>
         {/* Home Button */}
         <TouchableOpacity 
@@ -36,7 +36,7 @@ const Header = ({ navigation }) => {
           accessibilityLabel='Go to Home Page'
         >
           <Image 
-            source={require('../assets/images/SPSS_logo.png')} 
+            source={require('../../assets/images/SPSS_logo.png')} 
             style={styles.spssLogo}
           />
         </TouchableOpacity>
@@ -110,10 +110,10 @@ const Header = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
           
-            <View style={styles.divider} />
+            <View style={styles.divider}/>
           
             <TouchableOpacity style={styles.menuItem}
-              onPress={() => navigation.replace('Printing')}
+              onPress={() => navigation.navigate('Printing')}
             >
               <Text style={styles.menuItemText}>
                 In tài liệu
@@ -122,7 +122,7 @@ const Header = ({ navigation }) => {
           </View>
         )}
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -134,14 +134,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
+    zIndex: 10,
   },
 
   spssLogo: {
     position: 'absolute',
-    width: '40',
-    height: '53',
-    aspectRatio: 1,
-    top: 10,
+    width: 40.83,
+    height: 54.23,
   },
 
   TTCNbutton: {
@@ -175,20 +174,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 2,
     elevation: 2,
+    zIndex: 9999,
   },
 
   menu1: {
-    right: 15,
-    position: 'absolute',
-    zIndex: 1000, // Đảm bảo header luôn nằm trên các phần tử khác
-    elevation: 10,
+    right: 0,
   },
 
   menu2: {
-    left: 15,
-    zIndex: 1000, // Đảm bảo header luôn nằm trên các phần tử khác
-    elevation: 10,
-     position: 'absolute',
+    left: 0,
   },
 
   menuItem: {
@@ -205,7 +199,7 @@ const styles = StyleSheet.create({
   },
 
   divider: {
-    height: 1,
+    height: 2,
     backgroundColor: '#0388B4',
     marginVertical: 5,
     marginHorizontal: 12,

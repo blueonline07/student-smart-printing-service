@@ -7,6 +7,8 @@ import DocumentPicker from 'react-native-document-picker';
 import RNFS from 'react-native-fs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { clearfile } from '../api/configfile';
+import Header from '../../component/header';
+import Footer from '../../component/Footer';
 
 const UpLoadScreen = ({ route, navigation }) => {
   const [uploadedFiles, setUploadedFile] = useState([]);
@@ -57,8 +59,9 @@ const UpLoadScreen = ({ route, navigation }) => {
     setUploadedFile((prevFiles) => prevFiles.filter((file) => file.name !== fileName));
   };
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <View style={[styles.bounding,{minHeight:600}]}>
+    <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }}>
+      <Header navigation={navigation}/>
+      <View style={[styles.bounding,{minHeight:600,marginTop:40,marginBottom:30}]}>
         <Text style={{ color: "white", fontSize: 22, fontWeight: "bold", textAlign: "center" }}>
           TẢI TÀI LIỆU LÊN
         </Text>
@@ -116,6 +119,7 @@ const UpLoadScreen = ({ route, navigation }) => {
           </View>
         </View>
       </View>
+      <Footer />
     </ScrollView>
   );
 }
