@@ -3,10 +3,12 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import HeaderBeforeLogin from '../components/HeaderBeforeLogin';
 import Title from '../components/Title';
 import Footer from '../components/Footer';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const HomeBeforeLogin = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }}>
+      <View style={styles.container}>
 
       {/* Header - HomeBeforeLogin*/}
       <HeaderBeforeLogin navigation={navigation}/>
@@ -35,6 +37,7 @@ const HomeBeforeLogin = ({ navigation }) => {
       {/* Footer */}
       <Footer/>
     </View>
+    </ScrollView>
   );
 };
 
@@ -42,6 +45,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#0388B4',
+    width: '100%',
   },
 
   description: {

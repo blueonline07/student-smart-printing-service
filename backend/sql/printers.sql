@@ -1,7 +1,7 @@
 CREATE TABLE printers (
     id SERIAL PRIMARY KEY,
-    brand VARCHAR(100) NOT NULL,
-    model VARCHAR(100) NOT NULL,
+    brand VARCHAR(50) NOT NULL,
+    model VARCHAR(50) NOT NULL,
     room CHAR(3) NOT NULL,
     building CHAR(2) NOT NULL,
     campus CHAR(3) NOT NULL,

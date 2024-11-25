@@ -3,53 +3,54 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// Import your screens
+// Login Screens
 import HomeBeforeLogin from './Login/screens/HomeBeforeLogin';
 import HomeLogin from './Login/screens/HomeLogin';
 import HomeAfterLogin from './Login/screens/HomeAfterLogin';
-import PrinterSelectionScreen from './Printing/screens/selectPrint';
 import Information from './Login/screens/Information';
+// Printing Screens
+import PrinterSelectionScreen from './Printing/screens/selectPrint';
+import Print_screen from './Printing/Print_screen';
+import UpLoadScreen from './Printing/screens/upLoad';
+import ConfigfileScreen from './Printing/screens/config';
+import ConfirmScreen from './Printing/screens/confirm';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeBeforeLogin">
-        
-        {/* HomeBeforeLogin Screen */}
+      <Stack.Navigator initialRouteName="HomeBeforeLogin"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="Printing" component={Print_screen} />
+        <Stack.Screen name="PrinterSelection" component={PrinterSelectionScreen} />
+        <Stack.Screen name="UpLoadDoc" component={UpLoadScreen} />
+        <Stack.Screen name="Configfile" component={ConfigfileScreen} />
+        <Stack.Screen name="Confirm" component={ConfirmScreen} />
+
         <Stack.Screen
           name="HomeBeforeLogin"
           component={HomeBeforeLogin}
-          options={{ headerShown: false }}
         />
 
         {/* HomeLogin Screen */}
         <Stack.Screen
           name="HomeLogin"
           component={HomeLogin}
-          options={{ headerShown: false }}
         />
 
         {/* HomeAfterLogin Screen */}
         <Stack.Screen
           name="HomeAfterLogin"
           component={HomeAfterLogin}
-          options={{ headerShown: false }}
         />
 
         {/* Information Screen */}
         <Stack.Screen
           name="Information"
           component={Information}
-          options={{ headerShown: false }}
-        />
-
-        {/* Printer Selection Screen */}
-        <Stack.Screen
-          name="PrinterSelectionScreen"
-          component={PrinterSelectionScreen}
-          options={{ headerShown: false }}
         />
       </Stack.Navigator>
       <StatusBar style="auto" />

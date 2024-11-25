@@ -32,14 +32,14 @@ const Footer = () => {
         </View>
 
         <View style={styles.logoContainer}>
-          <Image 
-            source={require('../assets/images/SPSS_logo.png')} 
-            style={styles.footerSPSSLogo}
+        <Image 
+            source={require('../assets/images/01_logobachkhoatoi.png')} 
+            style={styles.footerBKLogo}
           />
 
           <Image 
-            source={require('../assets/images/01_logobachkhoatoi.png')} 
-            style={styles.footerBKLogo}
+            source={require('../assets/images/SPSS_logo.png')} 
+            style={styles.footerSPSSLogo}
           />
         </View>
       </View>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6A737B',
     width: '100%',
     padding: 15,
-    position: 'absolute',
+    // position: 'absolute',
     bottom: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -98,19 +98,17 @@ const styles = StyleSheet.create({
 
   logoContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    width: '40%',
   },
 
   footerSPSSLogo: {
-    position: 'absolute',
-    width: 40,
+    width: '40%',
     resizeMode: 'contain',
-    marginRight: 10,
   },
 
   footerBKLogo: {
-    width: 100,
-    height: 50,
+    width: '50%',
     resizeMode: 'contain',
   },
 });

@@ -21,7 +21,7 @@ const HomeAfterLogin = ({ navigation }) => {
         />
 
         <TouchableOpacity style={styles.button}
-          onPress={() => navigation.navigate('PrinterSelectionScreen', { paramName: 'value' })}
+          onPress={() => navigation.navigate('Printing')}
         >
           <Text style={styles.buttonText}>
             IN TÀI LIỆU

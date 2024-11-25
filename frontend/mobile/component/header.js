@@ -26,7 +26,7 @@ const Header = ({ navigation }) => {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={closeMenus}>
+    <View onPress={closeMenus} style={{flexDirection:"row"}}>
       <View style={styles.header}>
         {/* Home Button */}
         <TouchableOpacity 
@@ -113,7 +113,7 @@ const Header = ({ navigation }) => {
             <View style={styles.divider} />
           
             <TouchableOpacity style={styles.menuItem}
-              onPress={() => navigation.navigate('PrinterSelectionScreen', { paramName: 'value' })}
+              onPress={() => navigation.replace('Printing')}
             >
               <Text style={styles.menuItemText}>
                 In tài liệu
@@ -122,7 +122,7 @@ const Header = ({ navigation }) => {
           </View>
         )}
       </View>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 
@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
 
   spssLogo: {
     position: 'absolute',
-    width: '10%',
-    height: undefined,
+    width: '40',
+    height: '53',
     aspectRatio: 1,
     top: 10,
   },
@@ -179,10 +179,16 @@ const styles = StyleSheet.create({
 
   menu1: {
     right: 15,
+    position: 'absolute',
+    zIndex: 1000, // Đảm bảo header luôn nằm trên các phần tử khác
+    elevation: 10,
   },
 
   menu2: {
     left: 15,
+    zIndex: 1000, // Đảm bảo header luôn nằm trên các phần tử khác
+    elevation: 10,
+     position: 'absolute',
   },
 
   menuItem: {

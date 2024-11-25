@@ -113,7 +113,7 @@ const Header = ({ navigation }) => {
             <View style={styles.divider}/>
           
             <TouchableOpacity style={styles.menuItem}
-              onPress={() => navigation.navigate('PrinterSelectionScreen', { paramName: 'value' })}
+              onPress={() => navigation.navigate('Printing')}
             >
               <Text style={styles.menuItemText}>
                 In tài liệu
