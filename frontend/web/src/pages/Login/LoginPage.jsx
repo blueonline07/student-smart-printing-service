@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/images/logo.png";
 import logobk from "../../assets/images/logobk.png";
 import spss from "../../assets/images/spss.png";
 import bg2 from "../../assets/images/bg2.png";
-import hcmut from "../../assets/images/hcmut.png";
-import bg1 from "../../assets/images/bg1.png";
+import google from "../../assets/images/google.png";
 
 function Header ()
 {
@@ -52,7 +53,17 @@ function LoginPage() {
 
     return (
         <div className="flex min-h-screen flex-col">
-            <Header />
+            <div className="header min-h-[60px] bg-gradient-to-r from-[#00C0EF] to-[rgb(119,216,240)]">
+                <div className="flex items-center px-6 py-3">
+                    <img src={logo} alt="Student Smart Printing Service" className="h-12 w-48" />
+                    <div className="ml-auto">
+                        <button className="ml-3 rounded-full bg-sky-600 px-4 py-1 text-lg font-medium text-white shadow-lg hover:bg-sky-700">
+                            Trang chủ
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <main className="flex flex-grow bg-cyan-600 bg-opacity-95 px-6 py-6 justify-center items-center">
                 <div className="bg-gray-700 w-[400px] p-6 rounded-lg shadow-lg">
                     <h2 className="text-center text-xl font-bold text-white mb-4">
@@ -84,39 +95,41 @@ function LoginPage() {
                                 <button
                                     type="button"
                                     onClick={togglePasswordVisibility}
-                                    className="absolute inset-y-0 right-0 px-3 py-2 text-white font-semibold"
+                                    className="absolute inset-y-0 right-0 px-3 py-2 text-black font-semibold"
                                 >
-                                    {showPassword ? "Ẩn" : "Hiện"}
+                                    <FontAwesomeIcon
+                                        icon={showPassword ? faEyeSlash : faEye}
+                                        className="h-5 w-5 text-gray-600"
+                                    />
                                 </button>
                             </div>
                         </div>
                         <div className="flex items-center mb-4">
-                            <input
-                                type="checkbox"
-                                id="remember"
-                                className="mr-2"
-                            />
+                            <input type="checkbox" id="remember" className="mr-2" />
                             <label htmlFor="remember" className="text-white">
                                 Ghi nhớ đăng nhập
                             </label>
                         </div>
                         <button
                             type="submit"
-                            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+                            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mb-4"
+                        >
                             Đăng nhập
+                        </button>
+                        <button
+                            type="button"
+                            className="w-full bg-white hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-lg flex items-center justify-center"
+                        >
+                            <img src={google} alt="Google" className="h-5 w-5 mr-2" />
+                            Đăng nhập bằng Google
                         </button>
                     </form>
                     <p className="mt-4 text-xs text-center text-gray-400">
                         Your account is authenticated by HCMUT_SSO.
                     </p>
                 </div>
-                <img
-                    src={bg2}
-                    alt="Student Smart Printing Service"
-                    className="mx-10 flex h-5/6 w-1/3"
-                />
+                <img src={bg2} alt="Student Smart Printing Service" className="mx-10 flex h-5/6 w-1/3" />
             </main>
-            <Footer />
         </div>
     );
 }
