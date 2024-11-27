@@ -2,12 +2,16 @@ import React from 'react';
 import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 
 const HeaderBeforeLogin = ({ navigation }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
     return (
         <View style={styles.headerHBL}>
             {/* Home Button */}
             <TouchableOpacity 
-                style={styles.spssLogoHBL} 
+                style={[styles.spssLogoHBL, isHovered && styles. spssLogoHBLHovered]} 
                 onPress={() => navigation.navigate('HomeBeforeLogin')}
+                onPressIn={() => setIsHovered(true)}
+                onPressOut={() => setIsHovered(false)}
                 accessible={true}
                 accessibilityLabel='Navigate to the Home page'
             >
@@ -35,17 +39,9 @@ const styles = StyleSheet.create({
         height: 54.23,
     },
 
-    // homeButton: {
-    //     position: 'absolute',
-    //     width: 48,
-    //     height: 48,
-    //     left: 28,
-    //     top: 15,
-    //     backgroundColor: '#FFFFFF',
-    //     borderRadius: 24,
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    // },
+    spssLogoHBLHovered: {
+        backgroundColor: '#0388B4',
+    }
 });
 
 export default HeaderBeforeLogin;

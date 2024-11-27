@@ -3,11 +3,10 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'reac
 import HeaderBeforeLogin from '../components/HeaderBeforeLogin';
 import Title from '../components/Title';
 
-// import LinearGradient from 'react-native-linear-gradient';
-
 const HomeLogin = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isHovered1, setIsHovered1] = useState(false);
 
   // const [isVariant1, setIsVariant1] = useState(false);
   // const toggleVariant1 = () => {
@@ -82,8 +81,10 @@ const HomeLogin = ({ navigation }) => {
       
       {/* Login Button */}
       <TouchableOpacity 
-        style={styles.loginButton} 
+        style={[styles.loginButton, isHovered1 && styles.loginButtonHovered]} 
         onPress={() => navigation.navigate('HomeAfterLogin')}
+        onPressIn={() => setIsHovered1(true)}
+        onPressOut={() => setIsHovered1(false)}
       >
         {/* <LinearGradient
           colors={['rgba(32, 201, 151, 0.4)', 'rgba(0, 192, 239, 0.4)']}
@@ -261,6 +262,10 @@ const styles = StyleSheet.create({
     top: 670,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  loginButtonHovered: {
+    backgroundColor: '#20C997', 
   },
 
   // gradientButton: {

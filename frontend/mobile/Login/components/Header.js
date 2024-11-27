@@ -5,7 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const Header = ({ navigation }) => {
   const [menuVisible1, setMenuVisible1] = useState(false);
   const [menuVisible2, setMenuVisible2] = useState(false);
-
+  const [isHovered, setIsHovered] = useState(false);
+  
   const toggleMenu1 = () => {
     setMenuVisible1(!menuVisible1);
     if (menuVisible2) setMenuVisible2(false); 
@@ -30,8 +31,10 @@ const Header = ({ navigation }) => {
       <View style={styles.header}>
         {/* Home Button */}
         <TouchableOpacity 
-          style={styles.spssLogo} 
+          style={[styles.spssLogo, isHovered && styles.spssLogoHovered]} 
           onPress={() => navigation.navigate('HomeAfterLogin')}
+          onPressIn={() => setIsHovered(true)}
+          onPressOut={() => setIsHovered(false)}
           accessible={true}
           accessibilityLabel='Go to Home Page'
         >
@@ -141,6 +144,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 40.83,
     height: 54.23,
+  },
+
+  spssLogoHovered: {
+    backgroundColor: '#0388B4',
   },
 
   TTCNbutton: {

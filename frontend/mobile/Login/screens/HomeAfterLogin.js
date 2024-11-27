@@ -6,6 +6,7 @@ import Title from '../components/Title';
 import Footer from '../components/Footer';
 
 const HomeAfterLogin = ({ navigation }) => {
+  const [isHovered4, setIsHovered4] = useState(false);
   return (
     <View style={{ flex: 1, backgroundColor: '#0388B4' }}>
       <Header navigation={navigation}/>
@@ -20,8 +21,10 @@ const HomeAfterLogin = ({ navigation }) => {
           style={styles.image}
         />
 
-        <TouchableOpacity style={styles.button}
+        <TouchableOpacity style={[styles.button, isHovered4 && styles.buttonHovered]}
           onPress={() => navigation.navigate('Printing')}
+          onPressIn={() => setIsHovered4(true)}
+          onPressOut={() => setIsHovered4(false)}
         >
           <Text style={styles.buttonText}>
             IN TÀI LIỆU
@@ -48,12 +51,16 @@ const HomeAfterLogin = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#20C997',
+    backgroundColor: 'rgba(32, 201, 151, 0.4)',
     borderRadius: 100,
     alignItems: 'center',
     width: 310,
     height: 40,
     justifyContent: 'center',
+  },
+
+  buttonHovered: {
+    backgroundColor: '#20C997',
   },
 
   buttonText: {
