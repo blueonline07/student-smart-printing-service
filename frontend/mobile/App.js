@@ -14,7 +14,7 @@ import Print_screen from './Printing/Print_screen';
 import UpLoadScreen from './Printing/screens/upLoad';
 import ConfigfileScreen from './Printing/screens/config';
 import ConfirmScreen from './Printing/screens/confirm';
-
+import Print_History from './Printing_history/Printing_History';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -25,7 +25,7 @@ export default function App() {
           headerShown: false,
         }}>
         <Stack.Screen name="Printing" component={Print_screen} />
-        <Stack.Screen name="PrinterSelection" component={PrinterSelectionScreen} />
+        <Stack.Screen name="PrinterSelection" component={PrinterSelectionScreen} /> 
         <Stack.Screen name="UpLoadDoc" component={UpLoadScreen} />
         <Stack.Screen name="Configfile" component={ConfigfileScreen} />
         <Stack.Screen name="Confirm" component={ConfirmScreen} />
@@ -51,6 +51,10 @@ export default function App() {
         <Stack.Screen
           name="Information"
           component={Information}
+        />
+        <Stack.Screen
+          name="Print_History"
+          component={Print_History}
         />
       </Stack.Navigator>
       <StatusBar style="auto" />
