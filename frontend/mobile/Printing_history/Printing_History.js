@@ -6,7 +6,8 @@ import Header from '../Login/components/Header';
 import styles from './styles.js'
 import FindOrder from './component/findOrder.js';
 import FindOrder_by_date from './component/findOrder_by_date.js';
-export default function Print_History() {
+
+export default function Print_History({navigation}) {
     const [inputValue, setInputValue] = useState('');
     const [startDate, setstartDate] = useState('');
     const [endDate, setendDate] = useState('');
@@ -67,7 +68,7 @@ export default function Print_History() {
   }, []);
     return (
         <View style={{ flex: 1, backgroundColor: '#0388B4' }}>
-            <Header />
+            <Header navigation={navigation}/>
             <View style={styles.container}>
                 <View style={styles.TitleContainer}>
                     <Text style={styles.text1}>LỊCH SỬ GIAO DỊCH IN ẤN</Text>

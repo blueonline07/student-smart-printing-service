@@ -88,7 +88,7 @@ const Header = ({ navigation }) => {
         {/* Dropdown Menu-2 */}
         {menuVisible2 && (
           <View style={[styles.menu, styles.menu2]}>
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity style={styles.menuItem} onPress={() => navigation.replace('Print_History')}>
               <Text style={styles.menuItemText}>
                 Lịch sử in ấn
               </Text>
