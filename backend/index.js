@@ -22,7 +22,7 @@ app.use('/users', userRoutes)
 app.use('/printers', printerRoutes)
 app.use('/orders', orderRoutes)
 app.use('/printdetails', printDetailsRoutes)
-app.use('/auth', AuthRoutes)
+app.use('/login', AuthRoutes)
 
 // Start server
 app.listen(PORT, () => {
