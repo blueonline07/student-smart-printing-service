@@ -10,7 +10,7 @@ export default class PrintDetailsController {
         return res.status(400).send
       }
     }
-    return res.status(200).send('Print details created');
+    return res.status(201).send('Print details created');
   }
 
   static async getFromOrderId(req, res){
