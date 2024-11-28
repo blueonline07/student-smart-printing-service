@@ -1,6 +1,6 @@
-CREATE TYPE printing_status AS ENUM ('pending', 'finished', 'delivered', 'cancelled');
+CREATE TYPE printing_status AS ENUM ('PENDING', 'FINISHED', 'DELIVERED', 'CANCELLED');
 CREATE TYPE paper_size AS ENUM ('A4', 'A3');
-CREATE TYPE printing_type AS ENUM ('auto', 'manual');
+CREATE TYPE printing_type AS ENUM ('AUTO', 'MANUAL');
 
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
@@ -9,7 +9,7 @@ CREATE TABLE orders (
     student VARCHAR(50) NOT NULL,
     printer INTEGER NOT NULL,
     available_at TIMESTAMP NOT NULL,
-    status printing_status NOT NULL DEFAULT 'pending',
+    status printing_status NOT NULL DEFAULT 'PENDING',
     FOREIGN KEY (student) REFERENCES students(email),
     FOREIGN KEY (printer) REFERENCES printers(id)
 );
@@ -21,7 +21,6 @@ CREATE TABLE print_details(
     from_page INTEGER NOT NULL,
     to_page INTEGER NOT NULL,
     two_sided BOOLEAN NOT NULL,
-    colored BOOLEAN NOT NULL,
     page_size paper_size NOT NULL,
     quantity INTEGER NOT NULL,
     file_name VARCHAR(255) NOT NULL,
@@ -53,4 +52,4 @@ BEFORE INSERT ON print_details
 FOR EACH ROW
 EXECUTE FUNCTION auto_increment_print_detail_id();
 
-insert into print_details (order_id, from_page, to_page, two_sided, colored, page_size, quantity, file_name, file_path) values (4, 1, 10, true, false, 'A4', 1, 'file.pdf', '/haha/file.pdf');
+-- insert into print_details (order_id, from_page, to_page, two_sided, colored, page_size, quantity, file_name, file_path) values (4, 1, 10, true, false, 'A4', 1, 'file.pdf', '/haha/file.pdf');

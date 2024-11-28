@@ -15,7 +15,7 @@ export default class PrinterController {
     static async createPrinter(req, res) {
         try {
             await PrinterDAO.create(req.body);
-            res.status(201).end();
+            res.status(201).send('Printer created');
         } catch (error) {
             res.status(500).json({ error: error.message });
         }

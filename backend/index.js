@@ -5,6 +5,7 @@ import userRoutes from './routes/UserRoutes.js';
 import printerRoutes from './routes/PrinterRoutes.js';
 import orderRoutes from './routes/OrderRoutes.js';
 import printDetailsRoutes from './routes/PrintDetailsRoutes.js';
+import AuthRoutes from './routes/AuthRoutes.js';
 
 const app = express();
 const PORT = 8000;
@@ -21,6 +22,7 @@ app.use('/users', userRoutes)
 app.use('/printers', printerRoutes)
 app.use('/orders', orderRoutes)
 app.use('/printdetails', printDetailsRoutes)
+app.use('/auth', AuthRoutes)
 
 // Start server
 app.listen(PORT, () => {

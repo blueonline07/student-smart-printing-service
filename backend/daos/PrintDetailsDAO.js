@@ -4,11 +4,10 @@ export default class PrintDetailsDAO {
   /*
   printdetail
     {
-    "order_id": "1",
-    "from_page": "1",
-    "to_page": "10",
-    "two_sided": "true",
-    "colored": "true",
+    "order_id": 1,
+    "from_page": 1,
+    "to_page": 10,
+    "two_sided": true,
     "page_size": "A4",
     "quantity": "1",
     "file_name": "file.pdf",
@@ -17,10 +16,10 @@ export default class PrintDetailsDAO {
   */
 
   static async create(printDetail){
-    const query = 'INSERT INTO print_details (order_id, from_page, to_page, two_sided, colored, page_size, quantity, file_name, file_path) \
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
+    const query = 'INSERT INTO print_details (order_id, from_page, to_page, two_sided, page_size, quantity, file_name, file_path) \
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
     const values = [printDetail.order_id,  printDetail.from_page, printDetail.to_page, printDetail.two_sided,
-                   printDetail.colored, printDetail.page_size, printDetail.quantity,printDetail.file_name, printDetail.file_path];
+                    printDetail.page_size, printDetail.quantity,printDetail.file_name, printDetail.file_path];
     try {
       await client.query(query, values);
     } catch (err) {
@@ -55,10 +54,6 @@ export default class PrintDetailsDAO {
     if (printDetail.two_sided !== undefined) {
       fields.push(`two_sided = $${index++}`);
       values.push(printDetail.two_sided);
-    }
-    if (printDetail.colored !== undefined) {
-      fields.push(`colored = $${index++}`);
-      values.push(printDetail.colored);
     }
     if (printDetail.page_size !== undefined) {
       fields.push(`page_size = $${index++}`);
