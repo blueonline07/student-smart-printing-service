@@ -1,9 +1,8 @@
 import logo from '../assets/images/logo.png';
-import bg1 from '../assets/images/bg1.png';
-import hcmut from '../assets/images/hcmut.png';
 import logobk from '../assets/images/logobk.png';
 import spss from '../assets/images/spss.png';
 import icon from '../assets/images/icon.png';
+import {SlideTabsExample} from "../component/Tab";
 
 function Header() {
     return (
@@ -11,11 +10,7 @@ function Header() {
             <div className="flex items-center px-6 py-3">
                 <img src={logo} alt="Student Smart Printing Service" className="h-12 w-48" />
                 <div className="flex flex-row ml-auto">
-                    <div className="ml-3 px-4 py-1 text-lg font-medium text-white hover:text-gray-500 hover:cursor-pointer">Lịch sử in ấn</div>
-                    <div className="ml-3 px-4 py-1 text-lg font-medium text-white hover:text-gray-500 hover:cursor-pointer">Lịch sử mua trang</div>
-                    <div className="ml-3 px-4 py-1 text-lg font-medium text-white hover:text-gray-500 hover:cursor-pointer">Sử lý sự cố</div>
-                    <div className="ml-3 px-4 py-1 text-lg font-medium text-white hover:text-gray-500 hover:cursor-pointer">Cài đặt máy in</div>
-                    <img src={icon} alt="icon" className="h-10 w-10 ml-3 hover:cursor-pointer" />
+                    <SlideTabsExample />
                 </div>
             </div>
         </div>
