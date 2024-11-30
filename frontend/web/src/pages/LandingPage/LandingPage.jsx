@@ -1,8 +1,13 @@
+// student-smart-printing-service/frontend/web/src/pages/LandingPage/LandingPage.jsx
+import React from 'react';
 import logo from '../../assets/images/logo.png';
 import bg1 from '../../assets/images/bg1.png';
 import hcmut from '../../assets/images/hcmut.png';
 import logobk from '../../assets/images/logobk.png';
 import spss from '../../assets/images/spss.png';
+import Example from "../../component/DrawOutlineButton";
+import DrawOutlineButton from "../../component/DrawOutlineButton";
+import google from "../../assets/images/google.png";
 
 function Header() {
     return (
@@ -10,12 +15,9 @@ function Header() {
             <div className="flex items-center px-6 py-3">
                 <img src={logo} alt="Student Smart Printing Service" className="h-12 w-48" />
                 <div className="ml-auto">
-                    {/* <button className="rounded-full bg-sky-600 px-4 py-1 text-lg font-medium text-white shadow-lg hover:bg-sky-700">
-                        Đăng ký
-                    </button> */}
-                    <button className="ml-3 rounded-full bg-sky-600 px-4 py-1 text-lg font-medium text-white shadow-lg hover:bg-sky-700">
+                    <DrawOutlineButton>
                         Đăng nhập
-                    </button>
+                    </DrawOutlineButton>
                 </div>
             </div>
         </div>
