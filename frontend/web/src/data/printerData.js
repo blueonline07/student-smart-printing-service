@@ -1,49 +1,29 @@
-// src/data/printerData.js
 export const getPrinters = () => {
     return [
         {
-            id: '106A4P1',
-            model: 'M404dn',
-            name: 'HP LaserJet Pro M404dn',
-            location: 'A04-106',
-            brand: 'HP',
-            type: 'Laser đơn năng',
-            speed: '38',
-            connection: 'USB, Ethernet',
-            status: 'Vô hiệu hóa',
+            "id": 1,
+            "brand": "HP",
+            "model": "ABCXYZ",
+            "room": "420",
+            "building": "A1",
+            "campus": "BK1",
+            "status": "Kích hoạt",
+            "printables": [
+                "pdf, docx"
+            ]
         },
         {
-            id: '107H6P2',
-            model: 'HL-L2370DW',
-            name: 'Brother HL-L2370DW',
-            location: 'H6-107',
-            brand: 'Brother',
-            type: 'Laser đơn năng',
-            speed: '34',
-            connection: 'USB, Wi-Fi, Ethernet',
-            status: 'Kích hoạt',
-        },
-        {
-            id: '206H1P7',
-            model: 'LBP6030w',
-            name: 'Canon CLASS LBP6030w',
-            location: 'H1-206',
-            brand: 'Canon',
-            type: 'Laser đơn năng',
-            speed: '18',
-            connection: 'USB, Wi-Fi',
-            status: 'Kich hoạt',
-        },
-        {
-            id: '207B7P3',
-            model: '3330DNI',
-            name: 'Xerox Phaser 3330DNI',
-            location: 'B7-207',
-            brand: 'Xerox',
-            type: 'Laser đơn năng',
-            speed: '42',
-            connection: 'USB, Wi-Fi, Ethernet',
-            status: 'Vô hiệu hóa',
-        },
-    ];
+            "id": 2,
+            "brand": "Cannon",
+            "model": "LBP 29000",
+            "room": "811",
+            "building": "H6",
+            "campus": "BK2",
+            "status": "Kich hoạt",
+            "printables": [
+                "pdf, docx"
+            ]
+        }
+    ]
 };
+

@@ -8,25 +8,32 @@ function AddPrinting() {
     const [isInputFieldVisible, setIsInputFieldVisible] = useState(false);
     const [currentPrinter, setCurrentPrinter] = useState(null);
 
-    const headers = ["MÃ MÁY IN", "MÃ SP", "TÊN MÁY IN", "VỊ TRÍ", "HÃNG", "LOẠI MÁY IN", "TỐC ĐỘ IN", "KẾT NỐI", "TRẠNG THÁI", "ACTIONS"];
+    const headers = ["MÃ MÁY IN", "HÃNG", "MẪU", "PHÒNG", "TÒA","CƠ SỞ", "TRẠNG THÁI", "ĐỊNH DẠNG IN HỖ TRỢ ", ""];
+
     const rows = printers.map(printer => [
         printer.id,
-        printer.model,
-        printer.name,
-        printer.location,
         printer.brand,
-        printer.type,
-        printer.speed,
-        printer.connection,
+        printer.model,
+        printer.room,
+        printer.building,
+        printer.campus,
         printer.status,
+        printer.printables
     ]);
 
+
     const handleAddPrinter = (newPrinter) => {
+        let updatedPrinters;
+
         if (currentPrinter) {
-            setPrinters(printers.map(printer => printer.id === currentPrinter.id ? newPrinter : printer));
+            updatedPrinters = printers.map(printer =>
+                printer.id === currentPrinter.id ? newPrinter : printer
+            );
         } else {
-            setPrinters([...printers, newPrinter]);
+            updatedPrinters = [...printers, newPrinter];
         }
+
+        setPrinters(updatedPrinters);
         setIsInputFieldVisible(false);
         setCurrentPrinter(null);
     };
@@ -37,7 +44,8 @@ function AddPrinting() {
     };
 
     const handleDeletePrinter = (printerId) => {
-        setPrinters(printers.filter(printer => printer.id !== printerId));
+        const updatedPrinters = printers.filter(printer => printer.id !== printerId);
+        setPrinters(updatedPrinters);
     };
 
     return (
