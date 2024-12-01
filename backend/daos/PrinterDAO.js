@@ -18,7 +18,7 @@ printables {
 */
 
 export default class PrinterDAO {
-  static async createPrinter(printer) {
+  static async create(printer) {
     const query =
       "INSERT INTO printers (brand, model, room, building, campus, status) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id";
     const values = [
@@ -40,7 +40,7 @@ export default class PrinterDAO {
     }
   }
 
-  static async getPrinters(params) {
+  static async getAll(params) {
     const query =
       "SELECT * FROM printers WHERE (id = $1 OR $1 IS NULL)\
     AND (brand = $2 OR $2 IS NULL) AND (model = $3 OR $3 IS NULL)\
@@ -99,36 +99,18 @@ export default class PrinterDAO {
     }
   }
 
-  static async updatePrinter(printer, id) {
+  static async update(printer, id) {
     const fields = [];
     const values = [];
-    let index = 1;
-
-    if (printer.room !== undefined) {
-      fields.push(`room = $${index++}`);
-      values.push(printer.room);
-    }
-    if (printer.building !== undefined) {
-      fields.push(`building = $${index++}`);
-      values.push(printer.building);
-    }
-    if (printer.campus !== undefined) {
-      fields.push(`campus = $${index++}`);
-      values.push(printer.campus);
-    }
-    if (printer.status !== undefined) {
-      fields.push(`status = $${index++}`);
-      values.push(printer.status);
-    }
-
-    if (fields.length === 0) {
-      return Promise.resolve(); // No fields to update
-    }
-
-    const query = `UPDATE printers SET ${fields.join(
-      ", "
-    )} WHERE id = $${index}`;
-    values.push(id);
+    let query = "UPDATE printers SET ";
+    Object.keys(printer).forEach((key, index) => {
+      if (key === "newPrintables" || key === "removePrintables") {
+        return;
+      }
+      fields.push(`${key} = $${index + 1}`);
+      values.push(printer[key]);
+    });
+    query += fields.join(", ") + " WHERE id = $1";
 
     try {
       await client.query(query, values);
@@ -145,7 +127,7 @@ export default class PrinterDAO {
     }
   }
 
-  static async deletePrinter(printerId) {
+  static async delete(printerId) {
     const query = "DELETE FROM printers WHERE id = $1";
     const values = [printerId];
     try {
