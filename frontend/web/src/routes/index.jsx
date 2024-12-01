@@ -1,6 +1,7 @@
 import LandingPage from '../pages/LandingPage/LandingPage';
 import Home from '../pages/Home/Home';
 import Profile from '../pages/Profile/Profile';
+import PrintHistory from '../pages/PrintHistory/PrintHistory';
 
 const routes = [
     {
@@ -16,8 +17,12 @@ const routes = [
         path: '/profile',
         component: Profile,
         layout: true,
-    }
-
+    },
+    {
+        path: '/print-history',
+        component: PrintHistory,
+        layout: true,
+    },
 ];
 
 export default routes;
