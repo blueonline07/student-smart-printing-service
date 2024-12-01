@@ -3,6 +3,7 @@ import Home from '../pages/Home/Home';
 import Profile from '../pages/Profile/Profile';
 import LoginPage from '../pages/Login/LoginPage';
 import SelectUser from '../pages/Login/SelectUser';
+import AddPrinting from '../pages/AddPrinting/AddPrinting';
 
 const routes = [
     {
@@ -21,6 +22,11 @@ const routes = [
     {
         path: '/select-user',
         component: SelectUser,
+    },
+    {
+        path: '/add-printing',
+        component: AddPrinting,
+        layout: true,
     },
     {
         path: '/profile',
