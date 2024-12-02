@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function PrintHistory() {
+function PrintHistoryStaff() {
     const [printHistory, setPrintHistory] = useState([]);
     const [filteredPrintHistory, setFilteredPrintHistory] = useState([]);
 
@@ -34,6 +34,17 @@ function PrintHistory() {
         setFilteredPrintHistory(
             printHistory.filter((print) => print.printType === selectedDocument),
         );
+    };
+    const changeStatus = (e) => {
+        axios
+            .post('http://localhost:8000/orders/update', {
+                id: e.target.value.id,
+                status: e.target.value.status === 'PENDING' ? 'DONE' : 'PENDING',
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => console.error('Error:', error));
     };
 
     return (
@@ -124,14 +135,18 @@ function PrintHistory() {
                                         <td className="px-6 py-4">{print.create_at}</td>
                                         <td className="px-6 py-4">{print.available_at}</td>
                                         <td
-                                            className="px-6 py-4 font-medium"
+                                            value={print}
+                                            className="cursor-pointer px-6 py-4"
                                             style={
                                                 print.status === 'PENDING'
                                                     ? { color: 'orange' }
                                                     : { color: 'green' }
                                             }
+                                            onClick={(e) => changeStatus(e)}
                                         >
-                                            {print.status}
+                                            <div className="rounded-full p-1 px-3 py-2 font-medium shadow-lg transition-all hover:bg-gray-200 active:scale-95">
+                                                {print.status}
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}
@@ -147,7 +162,11 @@ function PrintHistory() {
                                 <td className="px-6 py-4">Bài tập lớn</td>
                                 <td className="px-6 py-4">2021-10-10</td>
                                 <td className="px-6 py-4">2021-10-10</td>
-                                <td className="px-6 py-4 font-medium text-green-600">Đã in xong</td>
+                                <td className="px-6 py-4 text-green-600">
+                                    <div className="rounded-full p-1 px-3 py-2 font-medium shadow-lg transition-all hover:bg-gray-200 active:scale-95">
+                                        Đã in xong
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -157,4 +176,4 @@ function PrintHistory() {
     );
 }
 
-export default PrintHistory;
+export default PrintHistoryStaff;

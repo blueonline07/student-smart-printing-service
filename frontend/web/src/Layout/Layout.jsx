@@ -2,14 +2,17 @@ import logo from '../assets/images/logo.png';
 import logobk from '../assets/images/logobk.png';
 import spss from '../assets/images/spss.png';
 import icon from '../assets/images/icon.png';
-import {SlideTabsExample} from "../component/Tab";
+import { SlideTabsExample } from '../component/Tab';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
         <div className="header min-h-[60px] bg-gradient-to-r from-[#00C0EF] to-[rgb(119,216,240)]">
             <div className="flex items-center px-6 py-3">
-                <img src={logo} alt="Student Smart Printing Service" className="h-12 w-48" />
-                <div className="flex flex-row ml-auto">
+                <Link to="/home">
+                    <img src={logo} alt="Student Smart Printing Service" className="h-12 w-48" />
+                </Link>
+                <div className="ml-auto flex flex-row">
                     <SlideTabsExample />
                 </div>
             </div>
@@ -36,7 +39,7 @@ function Footer() {
 
 function Layout({ children }) {
     return (
-        <div className="flex min-h-screen flex-col bg-bgColor">
+        <div className="bg-bgColor flex min-h-screen flex-col">
             <Header />
             <main className="flex-grow">{children}</main>
             <Footer />

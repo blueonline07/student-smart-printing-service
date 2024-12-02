@@ -1,11 +1,10 @@
-import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import logo from '../assets/images/logo.png';
+import logobk from '../assets/images/logobk.png';
+import spss from '../assets/images/spss.png';
 import icon from '../assets/images/icon.png';
+import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
-export const SlideTabsExample = () => {
-    return <SlideTabs />;
-};
 
 const SlideTabs = () => {
     const [position, setPosition] = useState({
@@ -26,11 +25,8 @@ const SlideTabs = () => {
                 }}
                 className="relative mx-auto flex w-fit rounded-full border-2 bg-white p-1"
             >
-                <Link to="/print-history">
+                <Link to="/print-history-staff">
                     <Tab setPosition={setPosition}>Lịch sử in ấn</Tab>
-                </Link>
-                <Link to="/add-printing">
-                    <Tab setPosition={setPosition}>Danh sách máy in</Tab>
                 </Link>
                 <div onClick={() => setDropdownVisible(!isDropdownVisible)}>
                     <Tab setPosition={setPosition}>
@@ -52,7 +48,7 @@ const SlideTabs = () => {
                     >
                         <li>
                             <a
-                                href="/profile"
+                                href="/profile-staff"
                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                             >
                                 Hồ sơ
@@ -104,3 +100,47 @@ const Cursor = ({ position }) => {
         />
     );
 };
+
+function Header() {
+    return (
+        <div className="header min-h-[60px] bg-gradient-to-r from-[#00C0EF] to-[rgb(119,216,240)]">
+            <div className="flex items-center px-6 py-3">
+                <Link to="/home-staff">
+                    <img src={logo} alt="Student Smart Printing Service" className="h-12 w-48" />
+                </Link>
+                <div className="ml-auto flex flex-row">
+                    <SlideTabs />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function Footer() {
+    return (
+        <div className="flex bg-gray-600 py-3 text-white">
+            <div className="flex flex-col px-6">
+                <h2 className="text-xl font-normal">Smart Printing Service Officer / SPSO</h2>
+                <p>spso@hcmut.edu.vn</p>
+                <p>(+84) 123456789</p>
+                <p>101-BK.B1, Trường Đại học Bách khoa ĐHQG-HCM</p>
+            </div>
+            <div className="ml-auto flex flex-row items-center px-6">
+                <img src={logobk} alt="BK" className="h-22 w-24" />
+                <img src={spss} alt="SPSS" className="w-18 ml-4 h-28" />
+            </div>
+        </div>
+    );
+}
+
+function LayoutStaff({ children }) {
+    return (
+        <div className="bg-bgColor flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+        </div>
+    );
+}
+
+export default LayoutStaff;
