@@ -5,7 +5,6 @@ import Profile from '../pages/Profile/Profile';
 import PrintHistory from '../pages/PrintHistory/PrintHistory';
 
 import LoginPage from '../pages/Login/LoginPage';
-import SelectUser from '../pages/Login/SelectUser';
 import AddPrinting from '../pages/AddPrinting/AddPrinting';
 import ProfileStaff from '../pages/Profile/ProfileStaff';
 import PrintHistoryStaff from '../pages/PrintHistory/printHistoryStaff';
@@ -33,12 +32,6 @@ const routes = [
     {
         path: '/login',
         component: LoginPage,
-        layout: false,
-        layoutStaff: false,
-    },
-    {
-        path: '/select-user',
-        component: SelectUser,
         layout: false,
         layoutStaff: false,
     },
