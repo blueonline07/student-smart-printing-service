@@ -5,9 +5,10 @@ import bg1 from '../../assets/images/bg1.png';
 import hcmut from '../../assets/images/hcmut.png';
 import logobk from '../../assets/images/logobk.png';
 import spss from '../../assets/images/spss.png';
-import Example from "../../component/DrawOutlineButton";
-import DrawOutlineButton from "../../component/DrawOutlineButton";
-import google from "../../assets/images/google.png";
+import Example from '../../component/DrawOutlineButton';
+import DrawOutlineButton from '../../component/DrawOutlineButton';
+import google from '../../assets/images/google.png';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -15,9 +16,9 @@ function Header() {
             <div className="flex items-center px-6 py-3">
                 <img src={logo} alt="Student Smart Printing Service" className="h-12 w-48" />
                 <div className="ml-auto">
-                    <DrawOutlineButton>
-                        Đăng nhập
-                    </DrawOutlineButton>
+                    <Link to="/login">
+                        <DrawOutlineButton>Đăng nhập</DrawOutlineButton>
+                    </Link>
                 </div>
             </div>
         </div>

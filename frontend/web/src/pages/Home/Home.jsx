@@ -1,7 +1,6 @@
 import bg1 from '../../assets/images/bg1.png';
 import hcmut from '../../assets/images/hcmut.png';
 
-
 function Home() {
     return (
         <div className="flex flex-col">
