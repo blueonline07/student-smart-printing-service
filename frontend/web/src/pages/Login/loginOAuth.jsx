@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'; //npm install jwt-decode
+import { jwtDecode } from "jwt-decode";
 import { GoogleLogin } from '@react-oauth/google'; //npm install @react-oauth/google
 import { useNavigate } from 'react-router-dom';
 
@@ -6,13 +7,18 @@ const LoginOauth = () => {
     const navigate = useNavigate();
 
     const handleLoginSuccess = (response) => {
-        // Bạn có thể xử lý token hoặc thông tin đăng nhập ở đây
+
         console.log('Đăng nhập thành công: ', response);
         
+        const decoded = jwtDecode(response.credential);
+        console.log('Thông tin người dùng từ token: ', decoded);
 
-
-
-        // Chuyển hướng người dùng tới trang chính hoặc trang sau khi đăng nhập thành công
+        
+        const { name, email, picture } = decoded;
+        console.log('Tên người dùng: ', name);
+        console.log('Email: ', email);
+        console.log('Ảnh đại diện: ', picture);
+        
         navigate('/home');
     };
 
