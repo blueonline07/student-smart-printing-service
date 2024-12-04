@@ -56,11 +56,13 @@ function LoginPage() {
                         ĐĂNG NHẬP TÀI KHOẢN
                     </h2>
                     <div className="flex items-center justify-center">
-                        <DrawOutlineButton>
+                        <Link to="/oauth">
+                            <button className="outline-button flex items-center">
                             <img src={google} alt="Google" className="mr-2 h-5 w-5" />
                             Đăng nhập với Google
-                        </DrawOutlineButton>
-                    </div>
+                            </button>
+                        </Link>
+                        </div>
                     <p className="mt-4 text-center text-xs text-gray-400">
                         Your account is authenticated by HCMUT_SSO.
                     </p>

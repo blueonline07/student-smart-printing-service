@@ -1,7 +1,7 @@
 import LandingPage from '../pages/LandingPage/LandingPage';
 import Home from '../pages/Home/Home';
 import Profile from '../pages/Profile/Profile';
-
+import loginOAuth from '../pages/Login/loginOAuth';
 import PrintHistory from '../pages/PrintHistory/PrintHistory';
 
 import LoginPage from '../pages/Login/LoginPage';
@@ -64,6 +64,12 @@ const routes = [
         component: PrintHistoryStaff,
         layout: false,
         layoutStaff: true,
+    },
+    {
+        path: '/oAuth', 
+            component: loginOAuth,
+        // layout: false,
+        // layoutStaff: true,
     },
 ];
 
