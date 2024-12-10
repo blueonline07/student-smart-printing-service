@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import { Fragment, useState } from 'react';
 import DefaultLayout from './Layout/Layout';
 import LayoutStaff from './Layout/LayoutStaff';
+import ProtectedRoute from './pages/Login/ProtectedRoute';
 
 function App() {
     return (
@@ -20,17 +21,27 @@ function App() {
                     } else {
                         Layout = Fragment;
                     }
+                    const allowedRoles = route.allowedRoles || [];
 
-                    return (
+                    const element = (
+                        <Layout>
+                            <Page />
+                        </Layout>
+                    );
+
+                    return route.protected ? (
                         <Route
                             key={index}
                             path={route.path}
                             element={
-                                <Layout>
-                                    <Page />
-                                </Layout>
+                                <ProtectedRoute allowedRoles={allowedRoles}>
+                                    {element}
+                                </ProtectedRoute>
                             }
                         />
+                    ) : (
+                        // Route công khai không cần bảo vệ
+                        <Route key={index} path={route.path} element={element} />
                     );
                 })}
             </Routes>
