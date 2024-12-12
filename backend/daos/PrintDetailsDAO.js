@@ -16,12 +16,14 @@ export default class PrintDetailsDAO {
   */
 
   static async create(printDetail){
+    console.log(printDetail);
     const query = 'INSERT INTO print_details (order_id, from_page, to_page, two_sided, page_size, quantity, file_name, file_path) \
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
     const values = [printDetail.order_id,  printDetail.from_page, printDetail.to_page, printDetail.two_sided,
                     printDetail.page_size, printDetail.quantity,printDetail.file_name, printDetail.file_path];
     try {
       await client.query(query, values);
+      console.log('Print detail created');
     } catch (err) {
       return Promise.reject(err);
     }

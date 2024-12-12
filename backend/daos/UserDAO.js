@@ -45,6 +45,7 @@ export default class UserDAO {
     }
   }
   static async getAll(params) {
+
     const role = params.role;
     let query;
     let values;

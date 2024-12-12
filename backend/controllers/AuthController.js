@@ -2,7 +2,7 @@ import UserDAO from '../daos/UserDAO.js';
 
 export default class AuthController {
   static async login(req, res) {
-    const {role, email} = req.body;
+    const {email, role} = req.body;
     const user = await UserDAO.getAll({
       email: email,
       role: role,
@@ -12,6 +12,6 @@ export default class AuthController {
       return res.status(401).json({ message: 'User not found' });
     }
 
-    return res.json(user[0]);
+    return res.status(200).json(user[0]);
   }
 }
