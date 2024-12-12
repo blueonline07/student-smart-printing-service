@@ -49,4 +49,5 @@ const Table = ({ headers, rows, onEdit, onDelete }) => {
     );
 };
 
+
 export default Table;

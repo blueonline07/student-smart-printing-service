@@ -4,20 +4,27 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const SlideInNotifications = () => {
     const [notifications, setNotifications] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const removeNotif = (id) => {
         setNotifications((pv) => pv.filter((n) => n.id !== id));
     };
 
+    const handleUpdate = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+            setNotifications((pv) => [generateRandomNotif(), ...pv]);
+        }, 2000);
+    };
+
     return (
         <div className="bg-white min-h-[100px] flex items-center justify-center">
             <button
-                onClick={() => {
-                    setNotifications((pv) => [generateRandomNotif(), ...pv]);
-                }}
+                onClick={handleUpdate}
                 className="text-sm text-white bg-indigo-500 hover:bg-indigo-600 active:scale-95 transition-all font-medium px-3 py-2 rounded"
             >
-            Cập nhật
+                Cập nhật
             </button>
             <div className="flex flex-col gap-1 w-72 fixed top-2 right-2 z-50 pointer-events-none">
                 <AnimatePresence>

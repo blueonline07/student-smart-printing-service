@@ -34,37 +34,37 @@ const InputField = ({ onAddPrinter }) => {
                            placeholder="1" required/>
                 </div>
                 <div>
-                    <label htmlFor="model"
+                    <label htmlFor="brand"
                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hãng</label>
-                    <input type="text" id="model" value={formData.model} onChange={handleChange}
+                    <input type="text" id="brand" value={formData.brand} onChange={handleChange}
                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            placeholder="HP" required/>
                 </div>
                 <div>
-                    <label htmlFor="name"
+                    <label htmlFor="model"
                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mẫu</label>
-                    <input type="text" id="name" value={formData.name} onChange={handleChange}
+                    <input type="text" id="model" value={formData.model} onChange={handleChange}
                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            placeholder="ABC" required/>
                 </div>
                 <div>
-                    <label htmlFor="location" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Vị
-                        trí</label>
-                    <input type="text" id="location" value={formData.location} onChange={handleChange}
+                    <label htmlFor="room" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phòng
+                    </label>
+                    <input type="text" id="room" value={formData.room} onChange={handleChange}
                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            placeholder="101" required/>
                 </div>
                 <div>
                     <label htmlFor="building" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Tòa</label>
-                    <input type="text" id="building" value={formData.location} onChange={handleChange}
+                    <input type="text" id="building" value={formData.building} onChange={handleChange}
                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            placeholder="H6" required/>
                 </div>
                 <div>
-                    <label htmlFor="brand" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cơ
+                    <label htmlFor="campus" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cơ
                         sở</label>
-                    <input type="text" id="brand" value={formData.brand} onChange={handleChange}
+                    <input type="text" id="campus" value={formData.campus} onChange={handleChange}
                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            placeholder="BK1" required/>
                 </div>
@@ -84,9 +84,9 @@ const InputField = ({ onAddPrinter }) => {
                 </select>
             </div>
             <div className="mb-6">
-                <label htmlFor="connection" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Định
+                <label htmlFor="printables" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Định
                     dạng in hỗ trợ</label>
-                <input type="text" id="connection" value={formData.connection} onChange={handleChange}
+                <input type="text" id="printables" value={formData.printables} onChange={handleChange}
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        placeholder="docx, pdf,..." required/>
             </div>
