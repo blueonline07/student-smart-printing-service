@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from '../../component/Table';
-import { getPrinters } from '../../data/printerData';
+import { getPrinters, addPrinter, updatePrinter } from '../../data/printerData';
 import InputField from '../../component/InputField';
 
 function AddPrinting() {
-    const [printers, setPrinters] = useState(getPrinters());
-    const [isInputFieldVisible, setIsInputFieldVisible] = useState(false);
+    const [printers, setPrinters] = useState([]);
+    const [isModalVisible, setIsModalVisible] = useState(false);
     const [currentPrinter, setCurrentPrinter] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setPrinters(getPrinters());
+    }, []);
 
     const headers = [
         'MÃ MÁY IN',
@@ -32,29 +37,32 @@ function AddPrinting() {
     ]);
 
     const handleAddPrinter = (newPrinter) => {
-        let updatedPrinters;
-
         if (currentPrinter) {
-            updatedPrinters = printers.map((printer) =>
-                printer.id === currentPrinter.id ? newPrinter : printer,
-            );
+            updatePrinter(newPrinter);
         } else {
-            updatedPrinters = [...printers, newPrinter];
+            addPrinter(newPrinter);
         }
-
-        setPrinters(updatedPrinters);
-        setIsInputFieldVisible(false);
+        setPrinters(getPrinters());
+        setIsModalVisible(false);
         setCurrentPrinter(null);
     };
 
     const handleEditPrinter = (printer) => {
         setCurrentPrinter(printer);
-        setIsInputFieldVisible(true);
+        setIsModalVisible(true);
     };
 
     const handleDeletePrinter = (printerId) => {
         const updatedPrinters = printers.filter((printer) => printer.id !== printerId);
         setPrinters(updatedPrinters);
+    };
+
+    const handleUpdate = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+            // Add your update logic here
+        }, 2000);
     };
 
     return (
@@ -74,7 +82,7 @@ function AddPrinting() {
                             </select>
                         </div>
                         <button
-                            onClick={() => setIsInputFieldVisible(true)}
+                            onClick={() => setIsModalVisible(true)}
                             className="flex items-center gap-2 rounded-full bg-teal-400 px-4 py-2 text-white shadow-md"
                         >
                             <span className="text-xl">+</span> Thêm máy in
@@ -92,9 +100,19 @@ function AddPrinting() {
                     />
                 </div>
 
-                {/* InputField */}
-                {isInputFieldVisible && (
-                    <InputField onAddPrinter={handleAddPrinter} initialData={currentPrinter} />
+                {/* Modal */}
+                {isModalVisible && (
+                    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                        <div className="bg-white p-6 rounded-lg shadow-lg relative">
+                            <button
+                                onClick={() => setIsModalVisible(false)}
+                                className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                            >
+                                &times;
+                            </button>
+                            <InputField onAddPrinter={handleAddPrinter} initialData={currentPrinter} />
+                        </div>
+                    </div>
                 )}
             </div>
         </div>
