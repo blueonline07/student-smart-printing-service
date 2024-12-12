@@ -21,10 +21,9 @@ export default class OrderDAO {
   }
 
   static async getAll(params){
-    console.log(params);
-    const tempTable = `SELECT o.id, o.created_at, p.model as printer, o.type, o.student, o.available_at FROM orders o, printers p WHERE p.id = o.printer`;
-    const query = `SELECT * FROM (${tempTable}) t WHERE (id = $1 OR $1 IS NULL) AND (type = $2 OR $2 IS NULL) AND (student = $3 OR $3 IS NULL) AND (printer = $4 OR $4 IS NULL) AND (available_at = $5 OR $5 IS NULL)`;
-    const values = [params.id, params.type, params.student, params.printer, params.available_at];
+    const tempTable = `SELECT o.id, o.created_at, p.model as printer, o.type, o.student, o.available_at, o.status FROM orders o, printers p WHERE p.id = o.printer`;
+    const query = `SELECT * FROM (${tempTable}) t WHERE (id = $1 OR $1 IS NULL) AND (type = $2 OR $2 IS NULL) AND (student = $3 OR $3 IS NULL) AND (printer = $4 OR $4 IS NULL) AND (available_at = $5 OR $5 IS NULL ) AND (status = $6 OR $6 IS NULL)`;
+    const values = [params.id, params.type, params.student, params.printer, params.available_at, params.status];
     const filesQuery = 'SELECT file_name FROM print_details WHERE order_id = $1';
 
     try {

@@ -12,7 +12,6 @@ export default class OrderController {
 
   static async createOrder(req, res) {
     try {
-      console.log(req.body);
       const ord_id = await OrderDAO.create(req.body);
       res.status(201).json({ id: ord_id });
     } catch (error) {
